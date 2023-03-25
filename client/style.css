@@ -9,12 +9,12 @@ body {
 }
 
 #back-img {
+  /* Remove background-image property */
   position: absolute;
   top: 0px;
   width: 100%;
   height: 100vh;
-  background-image: url("images/back.jpg");
-  background-size: 130%;
+  background-size: cover; /* Changed from 130% to cover */
   background-position: center;
   z-index: -2;
   opacity: 0.2;
@@ -86,5 +86,15 @@ body {
 .clicked {
   background: #c13e05;
   color: white;
-  border-color: #f0dddd;
+  animation: borderColorChange 2s infinite;
+}
+
+@keyframes borderColorChange {
+  0% { border-color: red; }
+  16.67% { border-color: orange; }
+  33.33% { border-color: yellow; }
+  50% { border-color: green; }
+  66.67% { border-color: blue; }
+  83.33% { border-color: indigo; }
+  100% { border-color: violet; }
 }
