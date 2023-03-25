@@ -161,7 +161,12 @@ $(function() {
   }
 
   function winner() {
-    $("#winner").removeClass("hidden");
+    Swal.fire({
+      icon: 'success',
+      title: 'Congratulations!',
+      text: 'You Win!',
+      confirmButtonText: 'OK'
+    });
   }
 
   // Random background image
