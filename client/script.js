@@ -16,17 +16,16 @@ $(function() {
     "Linus Facepalms",
     "Intro/Outro run accidentally",
     "The microphone gets hit",
-    "'Wow. I feel old...'",
+    "'Wow, I feel old...'",
     "Camera Not Focused",
     "Luke was Wrong",
     "Linus Was Wrong",
     "Luke Quit / Fired joke",
+    "Colton Quit / Fired joke",
     "Linus Drops Something",
     "A Wild LTT'r Appears!",
     "Special Guest (non-ltt)",
     "Intro / Outro too loud",
-    "Savage Jerky!",
-    "Synergy 2!",
     "Squarespace!",
     "Spectrum Glasses!",
     "'Okay Google / Alexa / Siri' trolling'",
@@ -44,6 +43,7 @@ $(function() {
     "New Sponsor!",
     "Linus shows his man nipples",
     "Luke Pokemon Facts",
+    "Luke talks about ChatGPT",
     "Stream Dies",
     "No Audio",
     "Audio Clipping!",
@@ -59,7 +59,8 @@ $(function() {
     "Linus: 'We've got a great show for you today!'",
     "Audio suddenly too quiet/loud",
     "Jerky-stealing drama",
-    "No actual news before sponsor spot"
+    "No actual news before sponsor spot",
+    "Linus doesn't censor while swearing"
   ];
   let spaces = [];
   for (let i = 0; i < 25; i++) {
@@ -162,5 +163,20 @@ $(function() {
   function winner() {
     $("#winner").removeClass("hidden");
   }
+
+  // Random background image
+  const randomBackground = () => {
+    const randomNumber = Math.floor(Math.random() * 3) + 1; // Generate random number between 1 and 3
+    return `url("images/background${randomNumber}.jpg")`; // pick background#,jpg based on random number above
+  };
+
+  $('#back-img').css('background-image', randomBackground());
+
+  //Change the Color
+  $(".item").click(function() {
+    $(this).toggleClass("clicked");
+
+    // Continuously changing border color of clicked items is handled in style.css
+  });
 
 });
