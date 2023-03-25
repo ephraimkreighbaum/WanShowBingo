@@ -165,16 +165,16 @@ $(function() {
   }
 
   // Random background image
-  const randomBackground = () => {
-    const randomNumber = Math.floor(Math.random() * 3) + 1; // Generate random number between 1 and 3
-    return `url("images/background${randomNumber}.jpeg")`; // pick background#,jpg based on random number above
-  };
+  //const randomBackground = () => {
+  //  const randomNumber = Math.floor(Math.random() * 3) + 1; // Generate random number between 1 and 3
+  //  return `url("images/background${randomNumber}.jpeg")`; // pick background#,jpg based on random number above
+  //};
 
-  $('#back-img').css('background-image', randomBackground());
+  //$('#back-img').css('background-image', randomBackground());
 
   //Change the Color
-  $(".item").click(function() {
-    $(this).toggleClass("clicked");
+  //$(".item").click(function() {
+  //  $(this).toggleClass("clicked");
 
     // Continuously changing border color of clicked items is handled in style.css
   });
