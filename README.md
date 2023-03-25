@@ -11,5 +11,8 @@ As of right now, there is no right squares / wrong squares logic, but I want to 
 ## Server
 The server side is really just a websocket counter and some data logging to see how many players are online at what times.
 
+## Discord
+Join our discord @ https://discord.gg/pWS5mw7jFz
+
 ## Originally by OSTycoon
 This repository is forked, and was originally created and maintained by @OSTycoon but https://www.wanshowbingo.com/ has since gone offline.
