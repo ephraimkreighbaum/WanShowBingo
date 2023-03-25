@@ -1,7 +1,7 @@
 $(function() {
 
-  //WEB SOCKETS?!?!?!?!
-      const socket = io('http://socket.wanshowbingo.com');
+  //WEB SOCKETS
+      const socket = io('https://socket.wanshow.bingo');
 
       socket.on("updateCount", function (msg) {
         document.getElementById('playerCount').innerHTML = msg
