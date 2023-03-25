@@ -177,6 +177,6 @@ $(function() {
   //  $(this).toggleClass("clicked");
 
     // Continuously changing border color of clicked items is handled in style.css
-  });
+  //});
 
 });
