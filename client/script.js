@@ -167,7 +167,7 @@ $(function() {
   // Random background image
   const randomBackground = () => {
     const randomNumber = Math.floor(Math.random() * 3) + 1; // Generate random number between 1 and 3
-    return `url("images/background${randomNumber}.jpg")`; // pick background#,jpg based on random number above
+    return `url("images/background${randomNumber}.jpeg")`; // pick background#,jpg based on random number above
   };
 
   $('#back-img').css('background-image', randomBackground());
