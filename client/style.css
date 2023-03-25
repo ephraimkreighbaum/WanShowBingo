@@ -9,17 +9,20 @@ body {
 }
 
 #back-img {
-  position: absolute;
-  top: 0px;
+  position: fixed; /* Changed from 'absolute' to 'fixed' */
+  top: 0;
+  left: 0; /* Added to fix the position */
   width: 100%;
   height: 100vh;
   background-image: url("images/back.jpg");
-  background-size: 130%;
+  background-size: cover; /* Changed from '130%' to 'cover' */
   background-position: center;
+  background-attachment: scroll; /* Added to make the background scroll with the user */
   z-index: -2;
   opacity: 0.2;
   overflow: hidden;
 }
+
 
 #bodyWrapper {
   width: 1000px;
