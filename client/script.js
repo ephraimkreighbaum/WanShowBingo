@@ -1,11 +1,41 @@
 $(function() {
 
   //WEB SOCKETS
-      const socket = io('https://socket.wanshow.bingo');
+     // const socket = io('https://socket.wanshow.bingo');
 
-      socket.on("updateCount", function (msg) {
-        document.getElementById('playerCount').innerHTML = msg
-      });
+     // socket.on("updateCount", function (msg) {
+     //   document.getElementById('playerCount').innerHTML = msg
+     // });
+    // const socket = io.connect("https://socket.wanshow.bingo/socket.io/");
+
+     //socket.on("connect", () => {
+     //  console.log("Connected to secure websocket server.");
+     //});
+
+     //socket.on("message", (data) => {
+     //  const parsedData = JSON.parse(data);
+     //  $("#liveUserCount").text(`Live players: ${parsedData.liveUsers}`);
+     //});
+     const socket = io('https://socket.wanshow.bingo:3000');
+
+     socket.on('connect', () => {
+       console.log('Connected to the server');
+     });
+
+    // socket.on('liveUsers', (data) => {
+    //   const liveUsersElement = document.getElementById('live-users');
+    //  liveUsersElement.textContent = `Live Bingo Players : ${data.liveUsers}`;
+    // });
+
+    socket.on('liveUsers', (data) => {
+      const liveUsersElement = document.getElementById('live-users');
+      liveUsersElement.classList.add('user-count');
+      liveUsersElement.textContent = "Current Live Users: " + data.liveUsers;
+    });
+
+     socket.on('disconnect', () => {
+       console.log('Disconnected from the server');
+     });
   //Populate
   const entries = [
     "Linus Hosts",
@@ -80,7 +110,7 @@ $(function() {
   let spaces = [];
   for (let i = 0; i < 25; i++) {
     if (i === 12) {
-      spaces[i] = "***Free Space*** \n\n Late";
+      spaces[i] = "***Free Space***";
     } else {
       const choice = Math.floor(Math.random() * entries.length);
       spaces[i] = entries[choice];

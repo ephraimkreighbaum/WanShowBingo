@@ -23,12 +23,55 @@ body {
   overflow: hidden;
 }
 
+.user-count {
+  animation: typing 0.5s steps(20, end);
+}
+
+nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 60px;
+  background-color: #333;
+}
+
+.nav-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  max-width: 1200px;
+  padding: 0 20px;
+}
+
+.nav-logo img {
+  height: 40px;
+}
+
+.nav-links a {
+  color: white;
+  text-decoration: none;
+  margin: 0 10px;
+  font-size: 18px;
+}
+
+.nav-login a {
+  color: white;
+  text-decoration: none;
+  font-size: 18px;
+}
+
+
+@keyframes typing {
+  from { width: 0; }
+}
 
 #bodyWrapper {
   width: 1000px;
   display: block;
   margin: 0px auto;
   padding-top: 50px;
+  padding-bottom: 50px;
 }
 
 #game {
@@ -98,6 +141,7 @@ body {
   color: white;
   animation: borderColorChange 2s infinite;
 }
+*/
 
 @keyframes borderColorChange {
   0% { border-color: red; }
@@ -108,4 +152,51 @@ body {
   83.33% { border-color: indigo; }
   100% { border-color: violet; }
 }
-8?
+
+.footer {
+  /* background-color: #333; */
+  padding: 1rem 0;
+  width: 100%;
+ /* position: absolute;*/
+  bottom: 0;
+}
+
+.footer-container {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.footer-links {
+  display: flex;
+  align-items: center;
+}
+
+.footer-links a {
+  color: #f2f2f2;
+  text-decoration: none;
+  margin-right: 1rem;
+}
+
+.footer-links a:hover {
+  color: #e0e0e0;
+}
+
+.footer-copyright {
+  color: #f2f2f2;
+  font-size: 0.9rem;
+}
+
+@media (max-width: 768px) {
+  .footer-container {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .footer-links {
+    margin-bottom: 0.5rem;
+  }
+}
+

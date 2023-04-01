@@ -2,6 +2,8 @@
 <html>
   <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.0/css/all.min.css">
     <title>WAN SHOW BINGO!</title>
     <link href="https://fonts.googleapis.com/css?family=Neucha" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="style.css">
@@ -13,25 +15,49 @@
 
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.4/socket.io.js"
-            integrity="sha256-WPeFPWD3PZQUDrpFnDM1N2KadNVwCfNS4cCZ78b76T8="
-            crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/websocket/1.0.34/ws.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.4.1/socket.io.min.js"></script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7570962068511106"
+     crossorigin="anonymous"></script>
     <script src ="script.js"></script>
   </head>
   <body>
+  <nav>
+      <div class="nav-container">
+        <div class="nav-links">
+          <a href="https://github.com/ZeSquare/WanShowBingo" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+          <a href="https://wanshow.bingo/leaderboards.html"><i class="fa-solid fa-trophy"></i> Leaderboards</a>
+          <a href="https://discord.gg/pWS5mw7jFz" target="_blank"><i class="fab fa-discord"></i> Discord</a>
+          <a href="https://status.wanshow.bingo/" target="_blank"><i class="fa-solid fa-signal"></i> Status Page</a>
+        </div>
+        <div class="nav-login">
+          <a href="#"><i class="fa-regular fa-user" target="_blank"></i> Login</a>
+        </div>
+      </div>
+    </nav>
     <div id="back-img"></div>
     <div id="bodyWrapper">
       <div id="game">
         <div class="title"><img src="/images/wanshowbingo-w.png" width="25%" alt="WAN Show Bingo!"></div>
-        <p id="playerCount"></p>
-        <p id="liveUserCount">Live players: Unavailable</p>
-        <p>Welcome back to WAN Show Bingo! - <a href="https://status.wanshow.bingo/">Status Page</a></p>
+        <p class="user-count" id="live-users"></p>
+	&nbsp;
         <div id="board">
         </div>
+	&nbsp;
         <p>Don't refresh, the card is auto generated each time!</p>
-        <p>Suggestions for Boxes? Open Suggestions on the <a href="https://discord.gg/pWS5mw7jFz">Discord!</a></p>
-        <p>Originally Created By <a href="https://github.com/OSTycoon">@OSTycoon</a> - View New GitHub Repo <a href="https://github.com/ZeSquare/WanShowBingo">Here</a></p>
-        <p>Last Updated March 25, 2023 - Maintained by <a href="https://www.bksn.pro/">Brock S.</a></p>
-    </div>
+        <p>Maintained by <a href="https://www.bksn.pro/" target="_blank">Brock S.</a></p>
+      </div>
+     &nbsp;
+       <footer class="footer">
+        <div class="container footer-container">
+          <div class="footer-links">
+            <a href="terms.html" target="_blank">Terms and Conditions</a>
+            <a href="privacy.html" target="_blank">Privacy Policy</a>
+          </div>
+          <div class="footer-copyright">
+            &copy; 2023 Wanshow.bingo. All rights reserved.
+          </div>
+        </div>
+       </footer>
   </body>
 </html>
