@@ -3,8 +3,8 @@ const https = require('https');
 const cors = require('cors');
 const { Server } = require('socket.io');
 
-const privateKey = fs.readFileSync('/your/folder/here/ws.example.com/key.pem', 'utf8');
-const certificate = fs.readFileSync('/your/folder/here/ws.example.com/crt.pem', 'utf8');
+const privateKey = fs.readFileSync('/etc/yunohost/certs/socket.wanshow.bingo/key.pem', 'utf8');
+const certificate = fs.readFileSync('/etc/yunohost/certs/socket.wanshow.bingo/crt.pem', 'utf8');
 
 const credentials = { key: privateKey, cert: certificate };
 const httpsServer = https.createServer(credentials);
@@ -12,20 +12,23 @@ const port = 3000;
 
 const io = new Server(httpsServer, {
   cors: {
-    origin: 'https://domain.tld',
+    origin: 'https://wanshow.bingo',
     methods: ['GET', 'POST'],
   },
 });
 
-let liveUsers = 0;
+let liveUsers = new Set();
 
 io.on('connection', (socket) => {
-  liveUsers++;
-  io.sockets.emit('liveUsers', { liveUsers });
+  const ipAddress = socket.handshake.headers['x-forwarded-for'] || socket.handshake.address;
+  if (!liveUsers.has(ipAddress)) {
+    liveUsers.add(ipAddress);
+    io.sockets.emit('liveUsers', { liveUsers: liveUsers.size });
+  }
 
   socket.on('disconnect', () => {
-    liveUsers--;
-    io.sockets.emit('liveUsers', { liveUsers });
+    liveUsers.delete(ipAddress);
+    io.sockets.emit('liveUsers', { liveUsers: liveUsers.size });
   });
 });
 
