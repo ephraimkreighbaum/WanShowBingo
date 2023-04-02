@@ -3,8 +3,8 @@ const https = require('https');
 const cors = require('cors');
 const { Server } = require('socket.io');
 
-const privateKey = fs.readFileSync('/etc/yunohost/certs/socket.wanshow.bingo/key.pem', 'utf8');
-const certificate = fs.readFileSync('/etc/yunohost/certs/socket.wanshow.bingo/crt.pem', 'utf8');
+const privateKey = fs.readFileSync('/your/host/here/domain.tld/key.pem', 'utf8');
+const certificate = fs.readFileSync('/your/host/here/domain.tld/crt.pem', 'utf8');
 
 const credentials = { key: privateKey, cert: certificate };
 const httpsServer = https.createServer(credentials);
