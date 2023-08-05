@@ -1,0 +1,449 @@
+* {
+  font-family: 'Dosis', sans-serif;
+  padding: 0px;
+  margin: 0px;
+}
+
+body {
+  background-color: #555;
+  z-index: -1;
+}
+
+#back-img {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  /* background-color: #000; */
+  /* background-image: linear-gradient(to bottom, #6699ff, #ff66cc); */
+  background-image: url("https://wanshow.bingo/resources/images/ltxwan.JPG");
+  background-size: cover;
+  background-position: center;
+  z-index: -2;
+  opacity: 0.2;
+  overflow: hidden;
+}
+
+.user-count {
+  animation: typing 0.5s steps(20, end);
+}
+
+nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 60px;
+  background-color: #333;
+}
+
+.nav-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  max-width: 1200px;
+  padding: 0 20px;
+}
+
+.nav-logo img {
+  height: 40px;
+}
+
+.nav-links a {
+  color: white;
+  text-decoration: none;
+  margin: 0 10px;
+  font-size: 18px;
+}
+
+.nav-login a {
+  color: white;
+  text-decoration: none;
+  font-size: 18px;
+}
+
+@keyframes typing {
+  from {
+    width: 0;
+  }
+}
+
+#bodyWrapper {
+  width: 1000px;
+  display: block;
+  margin: 0px auto;
+  padding-top: 50px;
+  padding-bottom: 50px;
+}
+
+#game {
+  width: 100%;
+  display: inline-block;
+  background-color: #c13e05;
+  padding: 15px 10px;
+  text-align: center;
+  color: white;
+  font-size: 14pt;
+  border-radius: 20px;
+  box-shadow: 10px 10px 12px -15px black;
+}
+
+#game p {
+  line-height: 30px;
+  text-shadow: 1px 1px 1px #00000056;
+}
+
+#game a {
+  color: white;
+}
+
+.hidden {
+  display: none;
+}
+
+.board {
+  width: 1000px;
+  margin: auto;
+  display: block;
+}
+
+#board {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  position: relative; /* Added to position the background image */
+  z-index: 1; /* Added to stack the game board above the background image */
+  flex-wrap: wrap; /* Allow items to wrap onto the next line */
+  transform-origin: top left; /* Scale from the top left corner */
+}
+
+#board::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("https://wanshow.bingo/resources/images/background2.jpeg");
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed; /* Changed to fixed to keep the background image in place */
+  z-index: -1; /* Stack the background image below the grid items */
+}
+
+.item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: calc(100% / 5 - 10px); /* adjust the denominator based on how many items you want in a row */
+  vertical-align: middle;
+  text-align: center;
+  width: 178px;
+  height: 153px;
+  border: 1px #c13e05 solid;
+  background-image: url("https://wanshow.bingo/resources/images/paper.png");
+  float: left;
+  color: black;
+  padding: 10px;
+}
+
+.item p {
+  display: table-cell;
+  vertical-align: middle;
+  text-align: center;
+}
+
+.title {
+  width: 100%;
+  text-align: center;
+  margin-top: 15px;
+  font-size: 32pt;
+}
+
+.clicked {
+  background: linear-gradient(to right, #b5226200, #893f8e00);
+  color: white;
+  border-color: #f0dddd;
+  animation: borderColorChange 2s infinite;
+}
+
+/*
+@keyframes borderColorChange {
+  0% {
+    border-color: #FF0000;
+  }
+  16.67% {
+    border-color: #FF6A00;
+  }
+  33.33% {
+    border-color: #FFD800;
+  }
+  50% {
+    border-color: #00FF00;
+  }
+  66.67% {
+    border-color: #0000FF;
+  }
+  83.33% {
+    border-color: #4B0082;
+  }
+  100% {
+    border-color: #9400D3;
+  }
+}
+*/
+
+.footer {
+  padding: 1rem 0;
+  width: 100%;
+  /* position: absolute; */
+  bottom: 0;
+}
+
+.footer-container {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.footer-links {
+  display: flex;
+  align-items: center;
+}
+
+.footer-links a {
+  color: #f2f2f2;
+  text-decoration: none;
+  margin-right: 1rem;
+}
+
+.footer-links a:hover {
+  color: #e0e0e0;
+}
+
+/* Remove underline from footer & a href */
+.footer-links a:hover {
+  text-decoration: none;
+}
+
+.footer-copyright {
+  color: #f2f2f2;
+  font-size: 0.9rem;
+}
+
+a {
+  color: white;
+}
+
+a:hover {
+  color: #ff6600;
+}
+
+#team {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.section {
+  flex: 0 0 48%; /* Each section will take up 48% of the available space */
+  margin: 10px;
+  /* Add media query to stack sections vertically on smaller screens */
+}
+
+.discord-banner {
+  display: flex;
+  align-items: center;
+  background-color: #5865F2; /* Discord's blurple color from the color palette */
+  color: #fff;
+  padding: 5px;
+  border-radius: 5px;
+  margin-top: 10px;
+  width: fit-content;
+}
+
+.discord-icon {
+  font-size: 18px;
+  margin-right: 5px;
+}
+
+.discord-tag {
+  font-size: 14px;
+}
+
+.member {
+  /* width: calc(50% - 20px); */
+  margin: 10px;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  position: relative;
+}
+
+.member img {
+  width: 150px;
+  border-radius: 50%;
+}
+
+.member h2 {
+  font-size: 24px;
+  margin-top: 10px;
+}
+
+.member p {
+  margin-top: 5px;
+}
+
+.member .social-links {
+  margin-top: 10px;
+}
+
+.member .social-links a {
+  color: #555;
+  text-decoration: none;
+  margin-right: 10px;
+  font-size: 18px;
+}
+
+.member .social-links a:hover {
+  color: #ff6600;
+}
+
+.discord-banner {
+  display: flex;
+  align-items: center;
+  background-color: #5865F2; /* Discord's blurple color from the color palette */
+  color: #fff;
+  padding: 5px;
+  border-radius: 5px;
+  margin-top: 10px;
+  width: fit-content;
+}
+
+.discord-icon {
+  font-size: 18px;
+  margin-right: 5px;
+}
+
+.discord-tag {
+  font-size: 14px;
+}
+
+.discord-tag {
+  background-color: #5865F2; /* Discord's purple color from the color palette */
+  padding: 5px 10px;
+  border-radius: 15px;
+  display: inline-block;
+}
+
+.discord-banner::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: calc(100% + 10px);
+  height: calc(100% + 10px);
+  border-radius: 20px;
+  z-index: -1;
+}
+
+.member {
+  margin-bottom: 20px;
+}
+
+.section h2 {
+  color: white;
+}
+
+@media (max-width: 768px) {
+  .section {
+    flex: 0 0 100%; /* On smaller screens, each section takes up 100% of the available space */
+  }
+}
+
+@media (max-width: 768px) {
+  .member {
+    width: calc(50% - 18px);
+  }
+}
+
+@media (max-width: 768px) {
+  .footer-container {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .footer-links {
+    margin-bottom: 0.5rem;
+  }
+}
+
+@media (max-width: 3840px) {
+  #game {
+    transform: scale(1.2); /* Scale down to 90% on smaller screens */
+    transform-origin: center; /* Added to scale from the center */
+  }
+
+  #nav-container {
+    transform: scale(0.8); /* Scale down to 80% on even smaller screens */
+    transform-origin: center; /* Added to scale from the center */
+  }
+}
+
+@media (max-width: 1920px) {
+  #game {
+    transform: scale(1.0); /* Scale down to 90% on smaller screens */
+    transform-origin: center; /* Added to scale from the center */
+    padding-left: 10px;
+  }
+
+  #nav-container {
+    transform: scale(1.0); /* Scale down to 80% on even smaller screens */
+    transform-origin: center; /* Added to scale from the center */
+  }
+}
+
+@media (max-width: 1200px) {
+  #game {
+    transform: scale(0.9); /* Scale down to 90% on smaller screens */
+    transform-origin: center; /* Added to scale from the center */
+    padding-left: 10px;
+  }
+
+  #nav-container {
+    transform: scale(0.9); /* Scale down to 80% on even smaller screens */
+    transform-origin: center; /* Added to scale from the center */
+  }
+}
+
+@media (max-width: 768px) {
+  #game {
+    transform: scale(0.84); /* Scale down to 80% on even smaller screens */
+    transform-origin: center; /* Added to scale from the center */
+    padding-left: 10px;
+  }
+
+  #nav-container {
+    transform: scale(0.84); /* Scale down to 80% on even smaller screens */
+    transform-origin: center; /* Added to scale from the center */
+  }
+}
+
+@media (max-width: 480px) {
+  #game {
+    transform: scale(0.65); /* Scale down to 70% on the smallest screens */
+    transform-origin: center; /* Added to scale from the center */
+    padding-left: 10px;
+  }
+
+  #nav-container {
+    transform: scale(0.65); /* Scale down to 80% on even smaller screens */
+    transform-origin: center; /* Added to scale from the center */
+  }
+}

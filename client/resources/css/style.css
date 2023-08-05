@@ -42,6 +42,13 @@ nav {
   width: 100%;
   max-width: 1200px;
   padding: 0 20px;
+  box-sizing: border-box; /* Add this line */
+}
+
+@media (max-width: 768px) {
+  .nav-container {
+    padding: 0 10px;  /* Reduce padding for small screens */
+  }
 }
 
 .nav-logo img {
@@ -181,7 +188,7 @@ nav {
 }
 
 .footer-links a:hover {
-  color: #e0e0e0;
+  color: #c13e05;
 }
 
 .footer-copyright {
@@ -200,3 +207,17 @@ nav {
   }
 }
 
+a:link {
+  color: white;
+  text-decoration: none;
+}
+
+a:visited {
+  color: white;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #c13e05;
+  text-decoration: none;
+}

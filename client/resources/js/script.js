@@ -1,5 +1,22 @@
 $(function() {
 
+   // Fetch max users from server
+  fetch('https://socket.wanshow.bingo/maxUsers', { credentials: 'include' })
+  .then(response => {
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    return response.json();
+  })
+  .then(data => {
+    const date = new Date(data.date);
+    const formattedDate = date.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+    document.getElementById('max-users').textContent = `Max User Count: ${data.maxUsers} Users Online on ${formattedDate}`;
+  })
+  .catch(error => {
+    console.error('Fetch request failed:', error);
+  });
+
   //WEB SOCKETS
      // const socket = io('https://socket.wanshow.bingo');
 
@@ -38,79 +55,80 @@ $(function() {
      });
   //Populate
   const entries = [
-    "Linus Hosts",
-    "Linus ignores luke to change the topic",
-    "Luke Hosts",
-    "James Hosts",
-    "CHAT NO",
-    "Linus Facepalms",
-    "Intro/Outro run accidentally",
-    "The microphone gets hit",
-    "'Wow, I feel old...'",
-    "Camera Not Focused",
-    "Luke was Wrong",
-    "Linus Was Wrong",
-    "Luke Quit / Fired joke",
-    "Colton Quit / Fired joke",
-    "Linus Drops Something",
-    "A Wild LTT'r Appears!",
-    "Special Guest (non-ltt)",
-    "Intro / Outro too loud",
-    "Squarespace!",
-    "Spectrum Glasses!",
-    "'Okay Google / Alexa / Siri' trolling'",
-    "'PRERECORDED'",
-    "No outro",
-    "No intro",
-    "Mac Weldon",
-    "James saying Frecschbuuks",
-    "Floatplane Preview!",
-    "Nvidia News!",
-    "AMD News!",
-    "Intel News!",
-    "Apple News!",
-    "New Sponsor!",
-    "Linus shows his man nipples",
-    "Luke Pokemon Facts",
-    "Luke talks about ChatGPT",
-    "Stream Dies",
-    "No Audio!",
-    "Audio Clipping!",
-    "Literally one super topic until sponsor spot",
-    "Linus leaves the other host alone for a while",
-    "News comes from the forums! Heck yeah!",
-    "Video output not connected to laptop",
-    "Console Topic for the peasantry",
-    "Luke Laughs REALLY hard about something",
-    "Luke 'Thats Hilarious!'",
-    "Linus has 2 phones on his person",
-    "Someone messes with the set",
-    "Linus: 'We've got a great show for you today!'",
-    "Audio suddenly too quiet/loud",
-    "No actual news before sponsor spot",
-    "Linus doesn't censor while swearing",
-    "Motion-Sickness Camera",
-    "Super-Zoomed Camera",
-    "Hello Dan",
-    "LTT Store Plug",
-    "LTT Water Bottle",
-    "Banana For Scale",
-    "Linus Hot Take",
-    "Linus Roasts a Company",
-    "Linus' parenting stories",
-    "Mispronunciation of a word/phrase",
-    "Rapid-fire sponsor reads",
-    "Stream Dies",
-    "Special Guest (non-ltt)",
-    "Camera Not Focused",
-    "Costumes!",
-    "Late Stream",
-    "4+ Hour WAN Show (What a Champ!)"
+  "Linus Hosts",
+  "Linus ignores luke to change the topic",
+  "Luke Hosts",
+  "CHAT NO",
+  "Linus Facepalms",
+  "Intro/Outro run accidentally",
+  "The microphone gets hit",
+  "'Wow, I feel old...'",
+  "Camera Not Focused",
+  "Luke was Wrong",
+  "Linus Was Wrong",
+  "Luke Quit / Fired joke",
+  "Colton Quit / Fired joke",
+  "Linus Drops Something",
+  "A Wild LTT'r Appears!",
+  "Special Guest (non-ltt)",
+  "Intro / Outro too loud",
+  "Squarespace!",
+  "Spectrum Glasses!",
+  "'Okay Google / Alexa / Siri' trolling'",
+  "'PRERECORDED'",
+  "No outro",
+  "No intro",
+  "Mac Weldon",
+  "James saying Frecschbuuks",
+  "Floatplane Preview!",
+  "Nvidia News!",
+  "AMD News!",
+  "Intel News!",
+  "Apple News!",
+  "New Sponsor!",
+  "Linus shows his man nipples",
+  "Luke Pokemon Facts",
+  "Luke talks about ChatGPT",
+  "Stream Dies",
+  "No Audio!",
+  "Audio Clipping!",
+  "Literally one super topic until sponsor spot",
+  "Linus leaves the other host alone for a while",
+  "News comes from the forums! Heck yeah!",
+  "Video output not connected to laptop",
+  "Console Topic for the peasantry",
+  "Luke Laughs REALLY hard about something",
+  "Luke 'Thats Hilarious!'",
+  "Linus has 2 phones on his person",
+  "Someone messes with the set",
+  "Linus: 'We've got a great show for you today!'",
+  "Audio suddenly too quiet/loud",
+  "No actual news before sponsor spot",
+  "Linus doesn't censor while swearing",
+  "Motion-Sickness Camera",
+  "Super-Zoomed Camera",
+  "Hello Dan",
+  "LTT Store Plug",
+  "LTT Water Bottle",
+  "Banana For Scale",
+  "Linus Hot Take",
+  "Linus Roasts a Company",
+  "Linus' parenting stories",
+  "Mispronunciation of a word/phrase",
+  "Rapid-fire sponsor reads",
+  "Stream Dies",
+  "Special Guest (non-ltt)",
+  "Camera Not Focused",
+  "Costumes!",
+  "Late Stream",
+  "4+ Hour WAN Show (What a Champ!)",
+  // Replace previous responses with new ones relavent to LinusTechTips - LTX Expo
+  "Luke laughs uncomfortably loudly" // Linus S. Suggestion July 27 2023 - https://linustechtips.com/topic/1522268-ltx-bingo-suggestions/#comment-16052355
   ];
   let spaces = [];
   for (let i = 0; i < 25; i++) {
     if (i === 12) {
-      spaces[i] = "***Free Space***";
+      spaces[i] = "***Free Space*** \n\n LTX Expo!";
     } else {
       const choice = Math.floor(Math.random() * entries.length);
       spaces[i] = entries[choice];

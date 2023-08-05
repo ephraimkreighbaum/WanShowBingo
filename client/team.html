@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.0/css/all.min.css">
+    <title>Meet The Team</title>
+    <link href="https://fonts.googleapis.com/css?family=Dosis" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="./resources/css/style-rev2.css">
+    <link rel="apple-touch-icon" sizes="180x180" href="/resources/images/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/resources/images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/resources//images/favicon-16x16.png">
+    <link rel="icon" type="image/x-icon" href="/resources/images/favicon.ico">
+    <link rel="manifest" href="/images/site.webmanifest">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/websocket/1.0.34/ws.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.4.1/socket.io.min.js"></script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7570962068511106"
+     crossorigin="anonymous"></script>
+    <script src ="/resources/js/script-rev2.js"></script>
+  </head>
+<body>
+  <nav>
+    <div class="nav-container">
+      <div class="nav-links">
+        <a href="https://wanshow.bingo/"><i class="fa-solid fa-home"></i> Home</a>
+        <a href="https://github.com/brocksexton/WanShowBingo" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+        <a href="https://discord.gg/pWS5mw7jFz" target="_blank"><i class="fab fa-discord"></i> Discord</a>
+        <a href="https://status.wanshow.bingo/" target="_blank"><i class="fa-solid fa-signal"></i> Status Page</a>
+      </div>
+      <div class="nav-login">
+        <a href="#"><i class="fa-regular fa-user" target="_blank"></i> Login</a>
+      </div>
+    </div>
+  </nav>
+  <div id="back-img"></div>
+  <div id="bodyWrapper">
+    <div id="team">
+    <div class="section">
+        <h2>Active Contributors</h2>
+
+      <div class="member">
+        <div class="discord-banner">
+            <div class="discord-icon"><i class="fab fa-discord"></i></div>
+            <div class="discord-tag">
+              _brock
+            </div>
+          </div>
+        <img src="https://wanshow.bingo/resources/images/brock.jpeg" alt="Brock Sexton">
+        <h3>Brock S.</h3>
+        <p>Brock handles hosting and development of WanShow.bingo, and created the site in March 2023 shortly after www.WanShowBingo.com went offline.</p>
+        <div class="social-links">
+          <a href="https://www.bksn.pro/" target="_blank"><i class="fa-solid fa-link"></i></a>
+          <a href="https://github.com/brocksexton" target="_blank"><i class="fab fa-github"></i></a>
+        </div>
+      </div>
+
+      <div class="member">
+        <div class="discord-banner">
+            <div class="discord-icon"><i class="fab fa-discord"></i></div>
+            <div class="discord-tag">
+              chronified
+            </div>
+          </div>
+        <img src="https://wanshow.bingo/resources/images/dax.jpeg" alt="Dax Anderson">
+        <h3>Dax Anderson</h3>
+        <p>Chief Vision Officer - Floatplane OG</p>
+        <div class="social-links">
+          <a href="https://www.bksn.pro/" target="_blank"><i class="fa-solid fa-link"></i></a>
+        </div>
+      </div>
+
+      </div>
+
+      <div class="section">
+        <h2>Past Contributors</h2>
+
+      <div class="member">
+        <img src="https://wanshow.bingo/resources/images/ostycoon.jpeg" alt="Carl Ayres">
+        <h3>Carl Ayres</h3>
+        <p>Carl (OSTycoon) was the original creator of WAN Show Bingo, unfortunately the GitHub has gone dormant and the website has gone offline.</p>
+        <div class="social-links">
+          <a href="https://github.com/OSTycoon" target="_blank"><i class="fab fa-github"></i></a>
+        </div>
+      </div>
+
+      <div class="member">
+        <img src="https://wanshow.bingo/resources/images/skylarmt.png" alt="Skylar Ittner">
+        <h3>Skylar Ittner</h3>
+        <p>Skylar (skylarmt) was a contributor to the original repo for WAN Show Bingo, unfortunately the GitHub has gone dormant and the website has gone offline.</p>
+        <div class="social-links">
+          <a href="https://github.com/skylarmt" target="_blank"><i class="fab fa-github"></i></a>
+        </div>
+      </div>
+
+      <div class="member">
+        <img src="https://wanshow.bingo/resources/images/jamesanderson.png" alt="James Anderson">
+        <h3>James Anderson</h3>
+        <p>James Anderson was a contributor to the original repo for WAN Show Bingo, unfortunately the GitHub has gone dormant and the website has gone offline.</p>
+        <div class="social-links">
+          <a href="https://github.com/jamesanderson9182" target="_blank"><i class="fab fa-github"></i></a>
+        </div>
+      </div>
+
+      </div>
+
+    </div>
+  </div>
+  <footer class="footer">
+    <div class="container footer-container">
+      <div class="footer-links">
+        <a href="terms.html" target="_blank">Terms and Conditions</a>
+        <a href="privacy.html" target="_blank">Privacy Policy</a>
+      </div>
+      <div class="footer-copyright">
+        &copy; 2023 Wanshow.bingo. All rights reserved.
+        Not affiliated with <a href="https://www.linusmediagroup.com/">Linus Media Group.</a>
+      </div>
+    </div>
+   </footer>
+   <script>
+    window.onload = function() {
+      if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+        var viewport = document.querySelector('meta[name="viewport"]');
+        if (window.innerWidth / window.innerHeight > 1) {
+          viewport.setAttribute('content', 'width=device-width, initial-scale=0.1, maximum-scale=0.1, user-scalable=0');
+        } else {
+          viewport.setAttribute('content', 'width=device-width, initial-scale=0.6, maximum-scale=0.6, user-scalable=0');
+        }
+      }
+    }
+    </script>  
+</body>
+</html>
