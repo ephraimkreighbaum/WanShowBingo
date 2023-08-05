@@ -1,4 +1,4 @@
-![WanShowBingo Logo](/client/images/wanshowbingo-b.png)
+![WanShowBingo white Logo](https://wanshow.bingo/resources/images/wanshowbingo-w.png) ![WanShowBingo black Logo](https://wanshow.bingo/resources/images/wanshowbingo-b.png)
 
 # WanShowBingo
 The source code for the wan show bingo client & server. https://www.wanshow.bingo/
