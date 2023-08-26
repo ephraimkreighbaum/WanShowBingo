@@ -1,11 +1,19 @@
+/* Bread-themed color palette */
+:root {
+  --bread-bg-color: #f3ecc2;
+  --bread-text-color: #5c4420;
+  --bread-accent-color: #c13e05;
+}
+
+/* Reset and base styles */
 * {
   font-family: 'Dosis', sans-serif;
-  padding: 0px;
-  margin: 0px;
+  padding: 0;
+  margin: 0;
 }
 
 body {
-  background-color: #555;
+  background-color: var(--bread-bg-color);
   z-index: -1;
 }
 
@@ -15,8 +23,6 @@ body {
   left: 0;
   width: 100%;
   height: 100vh;
-  /* background-color: #000; */
-  /* background-image: linear-gradient(to bottom, #6699ff, #ff66cc); */
   background-image: url("https://wanshow.bingo/resources/images/helloworld.jpeg");
   background-size: cover;
   background-position: center;
@@ -34,7 +40,7 @@ nav {
   justify-content: center;
   align-items: center;
   height: 60px;
-  background-color: #333;
+  background-color: var(--bread-accent-color);
 }
 
 .nav-container {
@@ -80,7 +86,7 @@ nav {
 #game {
   width: 100%;
   display: inline-block;
-  background-color: #c13e05;
+  background-color: var(--bread-accent-color);
   padding: 15px 10px;
   text-align: center;
   color: white;
@@ -144,7 +150,7 @@ nav {
   width: 178px;
   height: 153px;
   border: 1px #c13e05 solid;
-  background-image: url("https://wanshow.bingo/resources/images/paper.png");
+  background-image: url("https://wanshow.bingo/resources/images/breadshowbingo.jpg");
   float: left;
   color: black;
   padding: 10px;

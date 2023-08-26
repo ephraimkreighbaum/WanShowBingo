@@ -6,7 +6,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.0/css/all.min.css">
     <title>WAN SHOW BINGO!</title>
     <link href="https://fonts.googleapis.com/css?family=Dosis" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="./resources/css/style-rev2.css">
+    <link id="original-stylesheet" rel="stylesheet" type="text/css" href="./resources/css/style-rev3.css">
+    <!-- temp disable as theme switcher does not work <link id="bread-stylesheet" rel="stylesheet" type="text/css" href="./resources/css/style-bread.css?v=1"> -->
     <link rel="apple-touch-icon" sizes="180x180" href="/resources/images/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/resources/images/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/resources//images/favicon-16x16.png">
@@ -16,8 +17,23 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/websocket/1.0.34/ws.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.4.1/socket.io.min.js"></script>
-    <script src ="./resources/js/script-rev2.js"></script>
+    <script src ="./resources/js/script-rev3.js"></script>
     <style>
+      /* Style for the theme buttons */
+      button {
+        padding: 8px 16px;
+        background-color: #c13e05;
+        color: #ffffff;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        margin-right: 10px;
+      }
+
+      button:hover {
+        background-color: #ff8c5a;
+      }
+
       .sheet-link {
         display: inline-block;
         padding: 8px 16px;
@@ -31,9 +47,38 @@
       .sheet-link:hover {
         background-color: #ff8c5a;
       }
+
+      .refreshButton {
+        display: inline-block;
+        padding: 8px 16px;
+        background-color: #c13e05;
+        color: #ffffff;
+        text-decoration: none;
+        border-radius: 4px;
+        transition: background-color 0.3s;
+      }
+  
+      .refreshButton:hover {
+        background-color: #ff8c5a;
+      }
+
+      .item.clicked {
+        background-color: #ffffff00; /* Change this to your desired background color */
+        color: #fff; /* Change this to your desired text color */
+      }
+
+      /* Original Theme Styles */
+      .original-theme .sheet-link {
+        background-color: #c13e05;
+      }
+
+      /* Bread Theme Styles */
+      .bread-theme .sheet-link {
+        background-color: #ff8c5a;
+      }
     </style>
   </head>
-  <body>
+  <body class="original-theme">
     <nav>
         <div class="nav-container">
           <div class="nav-links">
@@ -42,6 +87,14 @@
             <a href="https://discord.gg/pWS5mw7jFz" target="_blank"><i class="fab fa-discord"></i> Discord</a>
             <a href="https://status.wanshow.bingo/" target="_blank"><i class="fa-solid fa-signal"></i> Status Page</a>
           </div>
+          <select id="themeSelector">
+            <option value="original">Original</option>
+            <option value="bread">Bread</option>
+            <option value="ltx23">LTX2023</option>
+            <option value="afterdark">After Dark</option>
+            <option value="darkmode">Dark Mode</option>
+            <option value="lightmode">Light Mode</option>
+          </select>          
           <div class="nav-login">
             <a href="#"><i class="fa-regular fa-user" target="_blank"></i> Login</a>
           </div>
@@ -58,9 +111,10 @@
 	&nbsp;
         <!--<p class="user-count" id="max-users"></p>-->      
         <a href="https://blog.bksn.pro/ltx-wan"><p>500~ Concurrent Live Users @ WAN Show LTX on July 29, 2023 - Read More</p></a>
-        <p>Don't refresh, the card is auto generated each time!</p>
-        <p>View The <a href="team.html" target="_blank">Team</a></p>
+        <!-- Add this button element -->
+        <button id="refreshButton"><a class="sheet-link">Refresh Bingo Card</a></button>
         <a href="https://sheet.wanshow.bingo/" target="_blank" class="sheet-link">View Google Sheet</a>
+        <p>View The <a href="team.html" target="_blank">Team</a></p>
       </div>
      <div id="whenplane">
       <div id="wan-show-timer"></div>
@@ -76,7 +130,7 @@
             Not affiliated with <a href="https://www.linusmediagroup.com/">Linus Media Group.</a>
           </div>
         </div>
-       </footer>
+       </footer>      
        <script>
         window.onload = function() {
           if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {

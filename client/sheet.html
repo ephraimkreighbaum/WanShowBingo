@@ -18,17 +18,34 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.4.1/socket.io.min.js"></script>
     <script src ="./resources/js/script-rev2.js"></script>
     <style>
-      .sheet-link {
+      .banner {
+        background-color: #f2f2f2;
+        padding: 10px;
+        text-align: center;
+      }
+  
+      .banner-container {
+        max-width: 800px;
+        margin: 0 auto;
+      }
+  
+      .banner-text {
+        font-size: 18px;
+        margin: 0;
+        padding: 10px 0;
+      }
+  
+      .banner-link {
         display: inline-block;
         padding: 8px 16px;
-        background-color: #c13e05;
+        background-color: #fffefe;
         color: #ffffff;
         text-decoration: none;
         border-radius: 4px;
         transition: background-color 0.3s;
       }
   
-      .sheet-link:hover {
+      .banner-link:hover {
         background-color: #ff8c5a;
       }
     </style>
@@ -60,7 +77,11 @@
         <a href="https://blog.bksn.pro/ltx-wan"><p>500~ Concurrent Live Users @ WAN Show LTX on July 29, 2023 - Read More</p></a>
         <p>Don't refresh, the card is auto generated each time!</p>
         <p>View The <a href="team.html" target="_blank">Team</a></p>
-        <a href="https://sheet.wanshow.bingo/" target="_blank" class="sheet-link">View Google Sheet</a>
+        <section class="banner">
+          <div class="banner-container">
+            <p class="banner-text">Check out our live Google Sheet for verified bingo tiles and history of past cards!</p>
+            <a href="https://sheet.wanshow.bingo/" class="banner-link">View Google Sheet</a>
+          </div>
       </div>
      <div id="whenplane">
       <div id="wan-show-timer"></div>
@@ -124,8 +145,7 @@
                 var countdownDuration = wanTime - now;
                 timerHtml += '<h2>The WAN Show starts in ' + formatDuration(countdownDuration) + '</h2>';
               } else {
-                var lateDuration = now - wanTime;
-                timerHtml += '<h2>' + (lateDuration > 0 ? 'WAN Show is Late by: ' : 'The WAN Show is offline') + formatDuration(Math.abs(lateDuration)) + '</h2>';
+                timerHtml += '<h2>WAN Show is offline</h2>';
               }
         
               timerHtml += '<p class="provider-text">Provided by WhenPlane.com</p>';
@@ -153,6 +173,6 @@
         
             setInterval(fetchTimer, 1000); // Update every second, timer may abruptly change when a new response is received from the server
           });
-        </script>                                                      
+        </script>                                               
   </body>
 </html>

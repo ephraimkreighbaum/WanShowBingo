@@ -1,5 +1,8 @@
 $(function() {
 
+  //define cache key
+  const CACHE_KEY = 'bingo-card'; // Define the cache key
+
    // Fetch max users from server
    fetch('https://socket.wanshow.bingo/maxUsers', { credentials: 'include' })
    .then(response => {
@@ -152,29 +155,53 @@ $(function() {
     "Mentions another creator",
     "Linus says: 'Look, the thing is'"
   ];
-  let spaces = [];
-  for (let i = 0; i < 25; i++) {
-    if (i === 12) {
-      spaces[i] = "***Free Space*** \n\n Late";
-    } else {
-      const choice = Math.floor(Math.random() * entries.length);
-      spaces[i] = entries[choice];
-      entries.splice(choice, 1);
-    }
+
+  // Retrieve cached bingo card or generate a new one
+  let spaces = JSON.parse(localStorage.getItem(CACHE_KEY));
+  let clickedTiles = []; // Define clickedTiles array
+  if (!spaces) {
+    spaces = generateRandomBingoCard(entries);
+    localStorage.setItem(CACHE_KEY, JSON.stringify(spaces));
+  } else {
+    // Restore clicked tiles from localStorage
+    clickedTiles = JSON.parse(localStorage.getItem("clickedTiles")) || [];
+    clickedTiles.forEach(index => {
+      spaces[index] = spaces[index].replace("***Free Space*** \n\n Late", "");
+    });
   }
-    // Draw the board
-    const board = $("#board");
-    for (let i = 0; i < spaces.length; i++) {
-        const boardTile = document.createElement('div');
-        boardTile.classList.add('item');
-        const tileText = document.createElement('p');
-        tileText.innerText = spaces[i];
-        boardTile.appendChild(tileText);
-        if (i === 12) {
-            boardTile.classList.add('clicked');
-        }
-        board.append(boardTile);
+
+  // Draw the board
+  const board = $("#board");
+  for (let i = 0; i < spaces.length; i++) {
+    const boardTile = document.createElement('div');
+    boardTile.classList.add('item');
+    if (i === 12 || clickedTiles.includes(i)) {
+      boardTile.classList.add('clicked');
     }
+    const tileText = document.createElement('p');
+    tileText.innerText = spaces[i];
+    boardTile.appendChild(tileText);
+    board.append(boardTile);
+  }
+
+  // Refresh button functionality
+  $("#refreshButton").click(function() {
+    localStorage.removeItem("clickedTiles");
+    clickedTiles = []; // Clear clickedTiles array
+    spaces = generateRandomBingoCard(entries);
+    localStorage.setItem(CACHE_KEY, JSON.stringify(spaces));
+
+    // Update the displayed bingo card
+    const boardTiles = $(".item");
+    boardTiles.each(function(index) {
+      const tileText = $(this).find('p');
+      tileText.text(spaces[index]);
+      $(this).removeClass('clicked');
+    });
+
+    loser();
+  });
+
   //hide / unhide twitch
   $("#hideTwitch").click(function() {
     $("#stream").toggle();
@@ -186,13 +213,49 @@ $(function() {
     }
   });
 
-  //Change the Color
+  // Theme selector change event
+  $("#themeSelector").change(function() {
+    const selectedTheme = $(this).val();
+    const body = $("body");
+    if (selectedTheme === "original") {
+        //body.removeClass("bread-theme").addClass("original-theme");
+        $(".title img").attr("src", "./resources/images/wanshowbingo-w.png");
+        $("title").text("WAN SHOW BINGO!");
+    } else if (selectedTheme === "bread") {
+        //body.removeClass("original-theme").addClass("bread-theme");
+        $(".title img").attr("src", "./resources/images/wanshowbingo-bread.png");
+        $("title").text("BREAD SHOW BINGO!");
+    } else if (selectedTheme === "ltx23") {
+        //body.removeClass("original-theme").addClass("ltx-theme");
+        $(".title img").attr("src", "./resources/images/ltxexpobingo.png");
+        $("title").text("LTX BINGO!");
+    } else if (selectedTheme === "afterdark") {
+        //body.removeClass("original-theme").addClass("aftedark-theme");
+        $(".title img").attr("src", "./resources/images/wanshowbingo-afterdark.png");
+        $("title").text("AFTER DARK BINGO!");
+    } else if (selectedTheme === "darkmode") {
+        //body.removeClass("original-theme").addClass("darkmode-theme");
+        $(".title img").attr("src", "./resources/images/wanshowbingo-w.png");
+        $("title").text("WAN SHOW BINGO!");
+    } else if (selectedTheme === "lightmode") {
+        //body.removeClass("original-theme").addClass("lightmode-theme");
+        $(".title img").attr("src", "./resources/images/wanshowbingo-b.png");
+        $("title").text("WAN SHOW BINGO!");
+    }
+  });
 
   $(".item").click(function() {
     $(this).toggleClass("clicked");
-      //Just watching some data for a bit. I'm working on a way to detect actual players from trolls and need some sample data.
-      const msg = $(this).children().html() + " : " + $(this).hasClass("clicked");
-      socket.emit('dataSend', msg);
+  
+    // Update the clicked tile's state in localStorage
+    const clickedTiles = $(".item.clicked").map(function() {
+      return $(this).index();
+    }).get();
+    localStorage.setItem("clickedTiles", JSON.stringify(clickedTiles));
+
+    //Just watching some data for a bit. I'm working on a way to detect actual players from trolls and need some sample data.
+    const msg = $(this).children().html() + " : " + $(this).hasClass("clicked");
+    socket.emit('dataSend', msg);
 
     //check for winner! There is probably an algo for this...
       const check = $("#board").children();
@@ -257,6 +320,20 @@ $(function() {
       text: 'You Win!',
       confirmButtonText: 'OK'
     });
+  }
+
+  function generateRandomBingoCard(entries) {
+    const card = [];
+    for (let i = 0; i < 25; i++) {
+      if (i === 12) {
+        card[i] = "***Free Space*** \n\n Late";
+      } else {
+        const choice = Math.floor(Math.random() * entries.length);
+        card[i] = entries[choice];
+        entries.splice(choice, 1);
+      }
+    }
+    return card;
   }
 
   // Random background image
