@@ -109,13 +109,16 @@ nav {
 }
 
 #board {
-  display: flex;
+  display: inline-grid; /* added to make the area a grid */
+  position: relative; /* Added to position the background image */
+  grid-template-columns: auto auto auto auto auto; /* gives the grid 5 columns no matter what size screen you are on */
+  z-index: 1;  /*Added to stack the game board above the background image */
+  transform-origin: top left; /* Scale from the top left corner */
+  
+  /*display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  position: relative; /* Added to position the background image */
-  z-index: 1; /* Added to stack the game board above the background image */
-  flex-wrap: wrap; /* Allow items to wrap onto the next line */
-  transform-origin: top left; /* Scale from the top left corner */
+  flex-wrap: wrap; Allow items to wrap onto the next line */
 }
 
 #board::before {
