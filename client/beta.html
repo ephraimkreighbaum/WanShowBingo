@@ -91,19 +91,28 @@
   </head>
   <body class="original-theme">
     <nav>
-        <div class="nav-container">
-          <div class="nav-links">
-            <a href="https://github.com/brocksexton/WanShowBingo" target="_blank"><i class="fab fa-github"></i> GitHub</a>
-            <a href="https://wanshow.bingo/leaderboards.html"><i class="fa-solid fa-trophy"></i> Leaderboards</a>
-            <a href="https://discord.gg/pWS5mw7jFz" target="_blank"><i class="fab fa-discord"></i> Discord</a>
-            <a href="https://status.wanshow.bingo/" target="_blank"><i class="fa-solid fa-signal"></i> Status Page</a>
-          </div>
-          <a href="https://sheet.wanshow.bingo/" target="_blank" class="sheet-link">View Google Sheet</a>         
-          <div class="nav-login">
-            <a href="#"><i class="fa-regular fa-user" target="_blank"></i> Login</a>
-          </div>
+      <div class="nav-container">
+        <div class="nav-links">
+          <a href="https://github.com/brocksexton/WanShowBingo" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+          <a href="https://wanshow.bingo/leaderboards.html"><i class="fa-solid fa-trophy"></i> Leaderboards</a>
+          <a href="https://discord.gg/pWS5mw7jFz" target="_blank"><i class="fab fa-discord"></i> Discord</a>
+          <a href="https://status.wanshow.bingo/" target="_blank"><i class="fa-solid fa-signal"></i> Status Page</a>
+          <a href="https://sheet.wanshow.bingo/" target="_blank"><i class="fa-solid fa-table"></i> Google Sheet</a>
         </div>
-      </nav>
+        <!--<label for="themeSelector" class="theme-selector-label">Select Theme:</label>-->
+        <select id="themeSelector">
+          <option value="original">Original</option>
+          <option value="bread">Bread</option>
+          <option value="ltx23">LTX2023</option>
+          <option value="afterdark">After Dark</option>
+          <option value="darkmode">Dark Mode</option>
+          <option value="lightmode">Light Mode</option>
+        </select> 
+        <div class="nav-login">
+          <a href="#"><i class="fa-regular fa-user" target="_blank"></i> Login</a>
+        </div>
+      </div>
+    </nav>
     <div id="back-img"></div>
     <div id="bodyWrapper">
       <div id="game">
@@ -125,15 +134,6 @@
         <a href="https://blog.bksn.pro/ltx-wan"><p>500~ Concurrent Live Users @ WAN Show LTX on July 29, 2023 - Read More</p></a>
         <!-- Add this button element -->
         <p>View The <a href="team.html" target="_blank">Team</a></p>
-        <p>Select a Theme!</p>
-        <select id="themeSelector">
-          <option value="original">Original</option>
-          <option value="bread">Bread</option>
-          <option value="ltx23">LTX2023</option>
-          <option value="afterdark">After Dark</option>
-          <option value="darkmode">Dark Mode</option>
-          <option value="lightmode">Light Mode</option>
-        </select> 
       </div>
      <div id="whenplane">
       <div id="wan-show-timer"></div>
@@ -226,6 +226,15 @@
         
             setInterval(fetchTimer, 1000); // Update every second, timer may abruptly change when a new response is received from the server
           });
+        </script>
+        <script>
+        // Toggle the hamburger menu
+        $(document).ready(function() {
+            $('.hamburger-icon').click(function() {
+            $('.hamburger-menu').toggleClass('open');
+            $('.menu').slideToggle();
+          });
+        });
         </script>                                                      
   </body>
 </html>

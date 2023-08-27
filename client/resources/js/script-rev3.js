@@ -294,7 +294,7 @@ $(function() {
           winner();
       } else if (checkTiles([2, 7, 12, 17, 22])) {
           winner();
-      } else if (checkTiles([3, 8, 13, 18, 21])) {
+      } else if (checkTiles([3, 8, 13, 18, 23])) {
           winner();
       } else if (checkTiles([4, 9, 14, 19, 24])) {
           winner();
