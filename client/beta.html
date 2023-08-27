@@ -125,16 +125,14 @@
             <a class="sheet-link"><i class="fas fa-sync-alt refresh-icon"></i></a>
           </button>
         </div>
-                     
         <p class="user-count" id="live-users"></p>
 	&nbsp;
         <div id="board">
         </div>
 	&nbsp;
         <!--<p class="user-count" id="max-users"></p>-->      
-        <a href="https://blog.bksn.pro/ltx-wan"><p>500~ Concurrent Live Users @ WAN Show LTX on July 29, 2023 - Read More</p></a>
-        <!-- Add this button element -->
-        <p>View The <a href="team.html" target="_blank">Team</a></p>
+        <!--<a href="https://blog.bksn.pro/ltx-wan"><p>500~ Concurrent Live Users @ WAN Show LTX on July 29, 2023 - Read More</p></a>
+        <p>View The <a href="team.html" target="_blank">Team</a></p> -->
         <button onclick="capture()">Capture and Download Screenshot</button>
       </div>
      <div id="whenplane">
@@ -184,7 +182,22 @@
         </script>
         <script>
           function capture() {
-            html2canvas(document.body).then(function(canvas) {
+            // Get the specific element you want to capture
+            var elementToCapture = document.getElementById('game');
+          
+            // Hide the elements you want to exclude from the screenshot
+            var elementsToHide = elementToCapture.querySelectorAll('.refreshButton, .user-count, button');
+            elementsToHide.forEach(function(element) {
+              element.style.display = 'none';
+            });
+          
+            // Use html2canvas to capture the modified element
+            html2canvas(elementToCapture).then(function(canvas) {
+              // Show the hidden elements again
+              elementsToHide.forEach(function(element) {
+                element.style.display = '';
+              });
+          
               var link = document.createElement('a');
               link.download = 'wanshowbingo.png';
               link.href = canvas.toDataURL();
