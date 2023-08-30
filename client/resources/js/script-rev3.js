@@ -166,7 +166,6 @@ $(function() {
     // Restore clicked tiles from localStorage
     clickedTiles = JSON.parse(localStorage.getItem("clickedTiles")) || [];
     clickedTiles.forEach(index => {
-      spaces[index] = spaces[index].replace("***Free Space*** \n\n Late", "");
     });
   }
 
@@ -182,6 +181,20 @@ $(function() {
     tileText.innerText = spaces[i];
     boardTile.appendChild(tileText);
     board.append(boardTile);
+  }
+
+  function generateRandomBingoCard(entries) {
+    const card = [];
+    for (let i = 0; i < 25; i++) {
+      if (i === 12) {
+        card[i] = "***Free Space*** \n\n Late";
+      } else {
+        const choice = Math.floor(Math.random() * entries.length);
+        card[i] = entries[choice];
+        entries.splice(choice, 1);
+      }
+    }
+    return card;
   }
 
   // Refresh button functionality
@@ -320,20 +333,6 @@ $(function() {
       text: 'You Win!',
       confirmButtonText: 'OK'
     });
-  }
-
-  function generateRandomBingoCard(entries) {
-    const card = [];
-    for (let i = 0; i < 25; i++) {
-      if (i === 12) {
-        card[i] = "***Free Space*** \n\n Late";
-      } else {
-        const choice = Math.floor(Math.random() * entries.length);
-        card[i] = entries[choice];
-        entries.splice(choice, 1);
-      }
-    }
-    return card;
   }
 
   // Random background image
