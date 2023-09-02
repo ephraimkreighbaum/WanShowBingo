@@ -6,61 +6,133 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.0/css/all.min.css">
     <title>WAN SHOW BINGO!</title>
     <link href="https://fonts.googleapis.com/css?family=Dosis" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="./resources/css/style-rev2.css">
+    <link id="original-stylesheet" rel="stylesheet" type="text/css" href="./resources/css/style-rev3.css">
+    <!-- temp disable as theme switcher does not work <link id="bread-stylesheet" rel="stylesheet" type="text/css" href="./resources/css/style-bread.css?v=1"> -->
     <link rel="apple-touch-icon" sizes="180x180" href="/resources/images/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/resources/images/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/resources//images/favicon-16x16.png">
     <link rel="icon" type="image/x-icon" href="/resources/images/favicon.ico">
-    <link rel="manifest" href="/images/site.webmanifest">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/websocket/1.0.34/ws.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.4.1/socket.io.min.js"></script>
-    <script src ="./resources/js/script-rev2.js"></script>
+    <script src ="./resources/js/script-rev3.js"></script>
+    <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
     <style>
+      button {
+        background-color: #c13e05;
+        color: #ffffff;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        margin-right: 10px;
+      }
+
+      button:hover {
+        background-color: #ffffff00;
+      }
+
       .sheet-link {
         display: inline-block;
-        padding: 8px 16px;
+        /*padding: 8px 16px;*/
         background-color: #c13e05;
         color: #ffffff;
         text-decoration: none;
-        border-radius: 4px;
         transition: background-color 0.3s;
       }
-  
-      .sheet-link:hover {
+
+      .logo-refresh-container {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 10px; /* Add some space between the logo and the rest of the content */
+      }
+
+      .title img {
+        max-width: 25%;
+        padding-left: 26px;
+      }
+
+      /* Style for the refresh icon */
+      .refresh-icon {
+        margin-right: 12px;
+        font-size: 20px;
+      }
+
+      /* Apply spinning animation to the icon on hover */
+      .refreshButton:hover .refresh-icon {
+        animation: spin 1s infinite linear;
+      }
+
+      /* Keyframes animation for spinning */
+      @keyframes spin {
+        from {
+          transform: rotate(0deg);
+        }
+        to {
+          transform: rotate(360deg);
+        }
+      }
+
+      .item.clicked {
+        background-color: #ffffff00;
+        color: #fff;
+      }
+
+      /* Original Theme Styles */
+      .original-theme .sheet-link {
+        background-color: #c13e05;
+      }
+
+      /* Bread Theme Styles */
+      .bread-theme .sheet-link {
         background-color: #ff8c5a;
       }
     </style>
   </head>
-  <body>
+  <body class="original-theme">
     <nav>
-        <div class="nav-container">
-          <div class="nav-links">
-            <a href="https://github.com/brocksexton/WanShowBingo" target="_blank"><i class="fab fa-github"></i> GitHub</a>
-            <a href="https://wanshow.bingo/leaderboards.html"><i class="fa-solid fa-trophy"></i> Leaderboards</a>
-            <a href="https://discord.gg/pWS5mw7jFz" target="_blank"><i class="fab fa-discord"></i> Discord</a>
-            <a href="https://status.wanshow.bingo/" target="_blank"><i class="fa-solid fa-signal"></i> Status Page</a>
-          </div>
-          <div class="nav-login">
-            <a href="#"><i class="fa-regular fa-user" target="_blank"></i> Login</a>
-          </div>
+      <div class="nav-container">
+        <div class="nav-links">
+          <a href="https://github.com/brocksexton/WanShowBingo" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+          <a href="https://wanshow.bingo/leaderboards.html"><i class="fa-solid fa-trophy"></i> Leaderboards</a>
+          <a href="https://discord.gg/pWS5mw7jFz" target="_blank"><i class="fab fa-discord"></i> Discord</a>
+          <a href="https://status.wanshow.bingo/" target="_blank"><i class="fa-solid fa-signal"></i> Status Page</a>
+          <a href="https://sheet.wanshow.bingo/" target="_blank"><i class="fa-solid fa-table"></i> Google Sheet</a>
         </div>
-      </nav>
+        <!--<label for="themeSelector" class="theme-selector-label">Select Theme:</label>-->
+        <select id="themeSelector">
+          <option value="original">Original</option>
+          <option value="bread">Bread</option>
+          <option value="ltx23">LTX2023</option>
+          <option value="afterdark">After Dark</option>
+          <option value="darkmode">Dark Mode</option>
+          <option value="lightmode">Light Mode</option>
+        </select> 
+        <div class="nav-login">
+          <a href="#"><i class="fa-regular fa-user" target="_blank"></i> Login</a>
+        </div>
+      </div>
+    </nav>
     <div id="back-img"></div>
     <div id="bodyWrapper">
       <div id="game">
-        <div class="title"><img src="./resources/images/wanshowbingo-w.png" width="25%" alt="WAN Show Bingo!"></div>
+        <div class="logo-refresh-container">
+          <div class="title">
+            <img src="./resources/images/wanshowbingo-w.png" width="25%" alt="WAN Show Bingo!">
+          </div>
+          <button id="refreshButton" class="refreshButton">
+            <a class="sheet-link"><i class="fas fa-sync-alt refresh-icon"></i></a>
+          </button>
+        </div>
         <p class="user-count" id="live-users"></p>
 	&nbsp;
         <div id="board">
         </div>
 	&nbsp;
-        <!--<p class="user-count" id="max-users"></p>-->      
-        <a href="https://blog.bksn.pro/ltx-wan"><p>500~ Concurrent Live Users @ WAN Show LTX on July 29, 2023 - Read More</p></a>
-        <p>Don't refresh, the card is auto generated each time!</p>
-        <p>View The <a href="team.html" target="_blank">Team</a></p>
-        <a href="https://sheet.wanshow.bingo/" target="_blank" class="sheet-link">View Google Sheet</a>
+        <a href="https://blog.bksn.pro/ltx-wan"><p class="user-count" id="max-users"></p></a>     
+        <!--<a href="https://blog.bksn.pro/ltx-wan"><p>500~ Concurrent Live Users @ WAN Show LTX on July 29, 2023 - Read More</p></a>-->
+        <p class="the-team">View The <a href="team.html" target="_blank">Team</a></p>
+        <button onclick="capture()">Capture and Download Screenshot</button>
       </div>
      <div id="whenplane">
       <div id="wan-show-timer"></div>
@@ -76,7 +148,7 @@
             Not affiliated with <a href="https://www.linusmediagroup.com/">Linus Media Group.</a>
           </div>
         </div>
-       </footer>
+       </footer>      
        <script>
         window.onload = function() {
           if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
@@ -106,6 +178,31 @@
             }
           });
         }
+        </script>
+        <script>
+          function capture() {
+            // Get the specific element you want to capture
+            var elementToCapture = document.getElementById('game');
+          
+            // Hide the elements you want to exclude from the screenshot
+            var elementsToHide = elementToCapture.querySelectorAll('.refreshButton, .user-count, .the-team, button');
+            elementsToHide.forEach(function(element) {
+              element.style.display = 'none';
+            });
+          
+            // Use html2canvas to capture the modified element
+            html2canvas(elementToCapture).then(function(canvas) {
+              // Show the hidden elements again
+              elementsToHide.forEach(function(element) {
+                element.style.display = '';
+              });
+          
+              var link = document.createElement('a');
+              link.download = 'wanshowbingo.png';
+              link.href = canvas.toDataURL();
+              link.click();
+            });
+          }
         </script>
         <script>
           $(document).ready(function() {
@@ -153,6 +250,15 @@
         
             setInterval(fetchTimer, 1000); // Update every second, timer may abruptly change when a new response is received from the server
           });
+        </script>
+        <script>
+        // Toggle the hamburger menu
+        $(document).ready(function() {
+            $('.hamburger-icon').click(function() {
+            $('.hamburger-menu').toggleClass('open');
+            $('.menu').slideToggle();
+          });
+        });
         </script>                                                      
   </body>
 </html>

@@ -515,40 +515,59 @@ a:hover {
 
 @media (max-width: 1200px) {
   #game {
-    transform: scale(0.9); /* Scale down to 90% on smaller screens */
+    transform: scale(0.75); /* Scale down to 80% on smaller screens */
     transform-origin: center; /* Added to scale from the center */
     padding-left: 10px;
+    margin-left: 18px;
   }
 
   #nav-container {
-    transform: scale(0.9); /* Scale down to 80% on even smaller screens */
+    transform: scale(0.9); /* Scale down to 90% on even smaller screens */
     transform-origin: center; /* Added to scale from the center */
+  }
+
+  #whenplane {
+    transform: scale(0.65); /* Scale down to 80% on even smaller screens */
+    transform-origin: left; /* Added to scale from the center */
+    padding-left: 10px;
+    margin-left: 25px;
   }
 }
 
 @media (max-width: 768px) {
   #game {
-    transform: scale(0.84); /* Scale down to 80% on even smaller screens */
-    transform-origin: center; /* Added to scale from the center */
-    padding-left: 10px;
+    transform: scale(0.65); /* Scale down to 70% on even smaller screens */
+    transform-origin: left; /* Added to scale from the center */
+    padding-left: 18px;
   }
 
   #nav-container {
-    transform: scale(0.84); /* Scale down to 80% on even smaller screens */
+    transform: scale(0.8); /* Scale down to 80% on even smaller screens */
     transform-origin: center; /* Added to scale from the center */
+  }
+
+  #whenplane {
+    transform: scale(0.65); /* Scale down to 80% on even smaller screens */
+    transform-origin: left; /* Added to scale from the center */
+    padding-left: 10px;
   }
 }
 
 @media (max-width: 480px) {
   #game {
-    transform: scale(0.65); /* Scale down to 70% on the smallest screens */
-    transform-origin: center; /* Added to scale from the center */
+    transform: scale(0.45); /* Scale down to 50% on the smallest screens */
+    transform-origin: left; /* Added to scale from the center */
     padding-left: 10px;
   }
 
   #nav-container {
-    transform: scale(0.65); /* Scale down to 80% on even smaller screens */
+    transform: scale(0.65); /* Scale down to 65% on even smaller screens */
     transform-origin: center; /* Added to scale from the center */
+  }
+
+  #whenplane {
+    transform: scale(0.45); /* Scale down to 80% on even smaller screens */
+    transform-origin: left; /* Added to scale from the center */
   }
 }
 
