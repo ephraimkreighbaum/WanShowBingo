@@ -24,4 +24,4 @@ The current ideas/trajectory are as follows
 4. Add Functionality to export Bingo Card as png/jpg to share - Social Media share options?
 
 ## Originally by OSTycoon
-This repository is forked, and was originally created and maintained by @OSTycoon but https://www.wanshowbingo.com/ has since gone offline.
+This repository is forked, and was originally created and maintained by @OSTycoon but https://www.wanshowbingo.com/ has since gone offline. (Update Sept 2023, the website https://wanshowbingo.com/ has come back online.
