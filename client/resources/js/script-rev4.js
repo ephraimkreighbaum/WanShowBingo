@@ -119,7 +119,7 @@ $(function() {
     "Linus complains about YouTube",
     "Live Tech Product Unboxing",
     "Talking over Audio",
-    "WAN After Dark",
+    // "WAN After Dark", # Luke requested removal of tile September 29, 2023
     "Disarm the Alarm!",
     "Trust me Bro",
     "Linus is out of touch",
