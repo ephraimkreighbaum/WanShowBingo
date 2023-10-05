@@ -120,6 +120,7 @@ $(function() {
     "Live Tech Product Unboxing",
     "Talking over Audio",
     // "WAN After Dark", # Luke requested removal of tile September 29, 2023
+    "WAN After Dark doesn't happen", // >:)
     "Disarm the Alarm!",
     "Trust me Bro",
     "Linus is out of touch",
