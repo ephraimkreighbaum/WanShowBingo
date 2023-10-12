@@ -3,6 +3,8 @@
 # WanShowBingo
 The source code for the wan show bingo client & server. https://www.wanshow.bingo/
 
+[![Discord](https://invidget.switchblade.xyz/pWS5mw7jFz)](https://discord.gg/pWS5mw7jFz)
+
 ## Client
 The client works by picking random squares from an array.
 
@@ -25,3 +27,8 @@ The current ideas/trajectory are as follows
 
 ## Originally by OSTycoon
 This repository is forked, and was originally created and maintained by @OSTycoon but https://www.wanshowbingo.com/ has since gone offline. (Update Sept 2023, the website https://wanshowbingo.com/ has come back online.
+
+## SD-WEBUI-DESKTOP
+Check out this project, which we use in our Discord for Stable Diffusion Image Generation!
+[![GitHub Repo](https://github.com/SpenserCai/sd-webui-discord)]
+[![Discord](https://invidget.switchblade.xyz/uNJpzEE4sZ)](https://discord.gg/uNJpzEE4sZ)
