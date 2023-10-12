@@ -31,4 +31,5 @@ This repository is forked, and was originally created and maintained by @OSTycoo
 ## SD-WEBUI-DESKTOP
 Check out this project, which we use in our Discord for Stable Diffusion Image Generation!
 https://github.com/SpenserCai/sd-webui-discord
+
 [![Discord](https://invidget.switchblade.xyz/uNJpzEE4sZ)](https://discord.gg/uNJpzEE4sZ)
