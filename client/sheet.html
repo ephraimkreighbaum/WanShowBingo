@@ -70,6 +70,7 @@
         <div class="title"><img src="./resources/images/wanshowbingo-w.png" width="25%" alt="WAN Show Bingo!"></div>
         <p class="user-count" id="live-users"></p>
 	&nbsp;
+	<button id="popoutButton" onclick="popoutBoard()">Popout Board</button>
         <div id="board">
         </div>
 	&nbsp;
@@ -172,6 +173,18 @@
             fetchTimer();
         
             setInterval(fetchTimer, 1000); // Update every second, timer may abruptly change when a new response is received from the server
+
+            function popoutBoard() {
+
+	    var boardContent = document.getElementById('board').innerHTML;
+
+            var popoutWindow = window.open('', 'boardPopout', 'resizable=yes,scrollbars=yes,width=600,height=400');
+
+            popoutWindow.document.write('<html><head><title>Board Popout</title></head><body>' + boardContent + '</body></html>');
+            
+	    popoutWindow.opener = null;
+          
+	  }
           });
         </script>                                               
   </body>
